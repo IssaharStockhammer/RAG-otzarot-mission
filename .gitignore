@@ -1,0 +1,5 @@
+.env
+__pycache__/
+.pytest_cache/
+*.pyc
+data/external/embeddings_bge_m3.json

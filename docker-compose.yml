@@ -1,0 +1,12 @@
+services:
+  app:
+    build: .
+    container_name: rag-otzarot-poc
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data/feedback:/app/data/feedback
+    environment:
+      DEEPINFRA_API_KEY: ${DEEPINFRA_API_KEY:-}
+      DEEPINFRA_BASE_URL: ${DEEPINFRA_BASE_URL:-https://api.deepinfra.com/v1/openai}
+      DEEPINFRA_EMBEDDING_MODEL: ${DEEPINFRA_EMBEDDING_MODEL:-BAAI/bge-m3}

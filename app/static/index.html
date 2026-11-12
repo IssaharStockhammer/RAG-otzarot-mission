@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>POC - אוצרות התורה</title>
+    <link rel="stylesheet" href="/static/style.css?v=12" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="hero">
+        <p class="hero-tag">RAG • Hebrew Retrieval</p>
+        <h1>אוצרות התורה — איתור מקורות</h1>
+        <p class="hero-subtitle">חיפוש תשובות במקורות, עם מצבי בדיקה נפרדים לטקסט ולמיקום בסריקה.</p>
+      </header>
+
+      <section class="panel search-panel">
+        <form id="search-form">
+          <div class="form-grid">
+            <section class="form-card">
+              <h2>בחירת שאלה</h2>
+              <label for="saved-query">שאלה מקובץ השאלות</label>
+              <div class="query-navigation">
+                <button id="previous-query" type="button" class="secondary" disabled>הקודמת</button>
+                <select id="saved-query" disabled>
+                  <option value="">טוען שאלות...</option>
+                </select>
+                <button id="next-query" type="button" class="secondary" disabled>הבאה</button>
+              </div>
+              <div id="query-counter" class="meta" aria-live="polite"></div>
+            </section>
+
+            <section class="form-card">
+              <h2>ניסוח וחיפוש</h2>
+              <label for="query">השאלה שלך</label>
+              <textarea id="query" rows="3" required></textarea>
+              <div class="threshold-row">
+                <label for="min-confidence">ציון קירבה מינימלי</label>
+                <input id="min-confidence" type="range" min="0" max="1" step="0.01" value="0.45" />
+                <output id="min-confidence-value" for="min-confidence">0.45</output>
+              </div>
+              <button id="search-button" type="submit">הרץ שאלה</button>
+            </section>
+          </div>
+        </form>
+      </section>
+
+      <section class="sticky-query panel">
+        <span class="sticky-query-label">שאלה פעילה:</span>
+        <span class="sticky-query-text" id="sticky-query-text">—</span>
+      </section>
+
+      <nav class="mode-switch panel" aria-label="מצב תצוגה">
+        <button type="button" class="mode-tab active" data-mode="user" aria-pressed="true">מצב משתמש</button>
+        <button type="button" class="mode-tab" data-mode="text" aria-pressed="false">בדיקת התאמת טקסט</button>
+        <button type="button" class="mode-tab" data-mode="location" aria-pressed="false">בדיקת מיקום בעמוד</button>
+      </nav>
+
+      <section id="status" class="status status-info" aria-live="polite">מוכן לחיפוש.</section>
+
+      <div class="workspace">
+        <aside class="analysis-panel panel hidden" id="analysis-panel">
+          <header class="analysis-header">
+            <span class="eyebrow">סביבת מפתחים</span>
+            <h2 id="analysis-title">ניתוח התוצאות</h2>
+            <p id="analysis-description">בחר מצב בדיקה כדי לתת משוב.</p>
+          </header>
+
+          <section class="weight-tuning hidden" id="weight-tuning">
+            <div class="weight-tuning-heading">
+              <div>
+                <h3>משקולות חיפוש הטקסט</h3>
+                <p>המשקולות משפיעות על דירוג הטקסט בלבד; הן אינן משנות את בדיקת המיקום.</p>
+              </div>
+              <button type="button" class="secondary" id="reset-weights">איפוס</button>
+            </div>
+            <label class="weight-control" for="lexical-weight">
+              <span>התאמה מילולית</span>
+              <input id="lexical-weight" type="range" min="0" max="1" step="0.05" value="0.45" />
+              <output id="lexical-weight-value">45%</output>
+            </label>
+            <label class="weight-control" for="dense-weight">
+              <span>התאמה סמנטית</span>
+              <input id="dense-weight" type="range" min="0" max="1" step="0.05" value="0.55" />
+              <output id="dense-weight-value">55%</output>
+            </label>
+            <p class="weight-note" id="weight-note">המשקולות מנורמלות ל־100%. הרץ שוב את אותה שאלה כדי להשוות.</p>
+            <button type="button" class="apply-weights-button" id="apply-weights">הרץ שוב עם המשקולות</button>
+          </section>
+
+          <section class="analysis-summary" aria-live="polite">
+            <h3>סיכום משוב נפרד</h3>
+            <div id="dev-summary-grid" class="dev-summary-grid"></div>
+            <button type="button" class="secondary" id="refresh-feedback-summary">רענן סיכום</button>
+          </section>
+
+          <section class="candidate-feedback-list">
+            <h3>הדירוג שלי לתוצאות</h3>
+            <div id="analysis-feedback-list">
+              <p class="empty-note">הרץ חיפוש כדי לדרג את המועמדים.</p>
+            </div>
+          </section>
+        </aside>
+
+        <section id="results" class="results" aria-live="polite">
+          <div class="empty-state">
+            <span class="empty-icon" aria-hidden="true">⌕</span>
+            <h2>התוצאות יופיעו כאן</h2>
+            <p>בחר שאלה או הקלד שאלה משלך כדי להתחיל.</p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="/static/app.js?v=12"></script>
+  </body>
+</html>
