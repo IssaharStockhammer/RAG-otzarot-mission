@@ -1,5 +1,17 @@
 # Repository context
 
+## Shared agent journal
+
+Before starting work, read `AGENTS.md`, `PROJECT_STATUS_he.md`, and
+`AGENT_CHAT_he.md`. Use the journal for attributed findings, proposals, replies,
+and handoffs between Copilot, Codex, and other agents. Append new entries with
+unique IDs and references to earlier entries; preserve other agents' messages.
+Distinguish verified findings and user decisions from unimplemented proposals.
+At handoff, record actual changes and validation, and update the concise status
+summary when relevant. Git commits/pushes/pulls synchronize this journal; it is
+not a live chat. The starter descriptions below predate the implementation;
+use the current code and status file to establish what exists now.
+
 This repository is the starter dataset for a Hebrew RAG retrieval assignment. There is no application source, dependency manifest, build script, test suite, or linter yet. The assignment specification is `otzrot_home_assignment_candidate/תרגיל בית – מפתח_ת אוצרות התורה (v3).pdf`; treat it as the authoritative delivery and evaluation contract.
 
 ## Dataset architecture

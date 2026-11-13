@@ -4,6 +4,10 @@ POC for Hebrew retrieval over the Otzrot dataset.
 
 > Resuming work? Read [`PROJECT_STATUS_he.md`](PROJECT_STATUS_he.md) first: current state, findings from the feedback, and open tasks.
 
+> Working with multiple AI agents? Read [`AGENTS.md`](AGENTS.md) and
+> [`AGENT_CHAT_he.md`](AGENT_CHAT_he.md), the shared discussion and handoff journal.
+> Append findings and replies there; keep the status file as the current-state summary.
+
 ## Quick start
 
 ### Local (Python)
