@@ -2,6 +2,8 @@
 
 POC for Hebrew retrieval over the Otzrot dataset.
 
+> Resuming work? Read [`PROJECT_STATUS_he.md`](PROJECT_STATUS_he.md) first: current state, findings from the feedback, and open tasks.
+
 ## Quick start
 
 ### Local (Python)
